@@ -10,12 +10,10 @@ cert_key=$SING_BOX_CERT_KEY
 filename="sing-box-1.9.3-linux-amd64"
 curl -L -o "$filename.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v1.9.3/$filename.tar.gz"
 tar -zxvf "$filename.tar.gz"
-ls
+rm -rf ./sing-box
 mv "./$filename" ./sing-box
-ls
 
 cd ./sing-box
-ls
 chmod 777 ./sing-box
 rm -rf ./cert
 mkdir ./cert
