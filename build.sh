@@ -15,8 +15,13 @@ rm -rf "./$filename"
 
 cd ./sing-box
 chmod 777 ./sing-box
-rm -rf ./cert
-mkdir ./cert
-cat <<< "$cert_pem" > ./cert/cert.pem
-cat <<< "$cert_key" > ./cert/cert.key
-sed "s#SING_BOX_PORT#$port#g; s#SING_BOX_UUID#$uuid#g; s#SING_BOX_HOST#$host#g; s#SING_BOX_PATH#$path#g; " config.json.template > config.json
+
+if [ -z "$cert_pem" ] || [ -z "$cert_key"]; then
+  sed "s#SING_BOX_PORT#$port#g; s#SING_BOX_UUID#$uuid#g; s#SING_BOX_HOST#$host#g; s#SING_BOX_PATH#$path#g; " notls-config.json.template > config.json
+elif
+  mkdir ./cert
+  cat <<< "$cert_pem" > ./cert/cert.pem
+  cat <<< "$cert_key" > ./cert/cert.key
+  sed "s#SING_BOX_PORT#$port#g; s#SING_BOX_UUID#$uuid#g; s#SING_BOX_HOST#$host#g; s#SING_BOX_PATH#$path#g; " config.json.template > config.json
+fi
+
