@@ -1,0 +1,60 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    //"output": "box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "address": "tls://8.8.8.8",
+        "strategy": "prefer_ipv4"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "vless",
+      "listen": "0.0.0.0",
+      "listen_port": SING_BOX_PORT,
+      "tcp_fast_open": true,
+      "users": [
+        {
+          "uuid": "SING_BOX_UUID"
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "SING_BOX_PATH",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "multiplex": {
+        "enabled": true,
+        "brutal": {
+          "enabled": false,
+          "up_mbps": 400,
+          "down_mbps": 400
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tcp_fast_open": true
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      }
+    ]
+  }
+}
