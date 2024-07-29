@@ -20,12 +20,3 @@ mkdir ./cert
 cat <<< "$cert_pem" > ./cert/cert.pem
 cat <<< "$cert_key" > ./cert/cert.key
 sed "s#SING_BOX_PORT#$port#g; s#SING_BOX_UUID#$uuid#g; s#SING_BOX_HOST#$host#g; s#SING_BOX_PATH#$path#g; " config.json.template > config.json
-
-ls
-echo "=================="
-ls ./cert
-echo "=================="
-cat ./cert/cert.pem
-echo "=================="
-cat ./cert/cert.key
-echo "=================="
