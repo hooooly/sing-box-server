@@ -16,7 +16,7 @@
   "inbounds": [
     {
       "type": "vless",
-      "listen": "::",
+      "listen": "0.0.0.0",
       "listen_port": SING_BOX_PORT,
       "tcp_fast_open": true,
       "users": [
