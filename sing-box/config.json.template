@@ -9,7 +9,7 @@
     "servers": [
       {
         "address": "tls://8.8.8.8",
-        "strategy": "prefer_ipv4"
+        "strategy": "ipv4_only"
       }
     ]
   },
