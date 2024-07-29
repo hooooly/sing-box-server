@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [! -f "./sing-box/config.json" ]; then
+if [ ! -f "./sing-box/config.json" ]; then
   ./build.sh
 fi
 cd ./sing-box
