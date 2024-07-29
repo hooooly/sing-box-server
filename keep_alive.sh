@@ -18,6 +18,6 @@ function get {
 }
 
 while [ 1 ]; do
-  sleep 80
+  sleep $(($RANDOM % 15))
   echo $(get)
 done
