@@ -19,4 +19,4 @@ rm -rf ./cert
 mkdir ./cert
 echo $cert_pem > ./cert/cert.pem
 echo $cert_key > ./cert/cert.key
-sed "/SING_BOX_PORT/$port/g; /SING_BOX_UUID/$uuid/g; /SING_BOX_HOST/$host/g; /SING_BOX_PATH/$path/g; " config.json.template > config.json
+sed "s#SING_BOX_PORT#$port#g; s#SING_BOX_UUID#$uuid#g; s#SING_BOX_HOST#$host#g; s#SING_BOX_PATH#$path#g; " config.json.template > config.json
